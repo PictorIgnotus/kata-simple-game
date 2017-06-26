@@ -10,7 +10,7 @@ var Battle = require('./battle');
 var Weapons = require('./weapons');
 
 var heroes = [
-  {
+  /*{
     id : 1,
     type : 'warrior',
     hp : 30,
@@ -21,14 +21,14 @@ var heroes = [
     type : 'priest',
     hp : 20,
     weapon : 'hand'
-  }
+  }*/
 ];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/heroes', function(req, res) {
-  res.status(200).send(heroes);
+  res.status(200).send({heroes: heroes });
 });
 
 app.post('/heroes', function(req, res) {
@@ -43,7 +43,7 @@ function saveHero(hero, cb){
     return cb('Missing datas...');
   hero.id = heroes.length + 1;
   heroes.push(hero);
-  return cb(null, hero.id);
+  return cb(null, hero);
 }
 
 app.get('/battle', function(req, res) {
@@ -86,3 +86,4 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('The app is listening on port ', this.address().port);
 });
 
+module.exports = app;
