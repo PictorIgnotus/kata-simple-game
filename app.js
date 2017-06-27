@@ -36,10 +36,13 @@ function saveHero(hero, cb){
 app.get('/battle', function(req, res) {
   var id1 = req.param('hero1')-1;
   var id2 = req.param('hero2')-1;
-  var hero1 = heroes[id1];
-  var hero2 = heroes[id2];
-  var winner = battle(hero1, hero2);
-  res.status(200).send({winner_id: winner});
+  if(!heroes[id1] || !heroes[id2]) res.status(400).send({error: 'Missing hero...'});
+  else {
+    var hero1 = heroes[id1];
+    var hero2 = heroes[id2];
+    var winner = battle(hero1, hero2);
+    res.status(200).send({winner_id: winner});
+  }
 });
 
 function battle(h1, h2){

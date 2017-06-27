@@ -106,6 +106,14 @@ describe('Server', function() {
       });
     });
 
+     it('should throw an error with error code 400 if a hero missing', function(done) {
+       request(app)
+        .get('/battle?hero1=1&hero2=3')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(400, { error: 'Missing hero...' }, done);
+    });
+
   });
 
 });
