@@ -1,3 +1,3 @@
 # Korszerű webfejlesztés beadandó
 
-Egyszerű alkalmazás mocha-val tesztelve, a szervernél a post metódus implementálásával gondjaim akadtak, valamiért a PostMan nem akarta megfelelően postolni az adatokat.
+Egyszerű alkalmazás mocha-val tesztelve, hősök párbajoznak egymás ellen, amik szerver metódusokkal vannak megvalósítva.
